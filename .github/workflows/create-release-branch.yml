@@ -1,0 +1,44 @@
+name: Create Release Branch
+
+on:
+  pull_request_target:
+    types: [labeled, synchronize, reopened, ready_for_review]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  create-release-branch:
+    if: github.event.pull_request.draft == false && contains(github.event.pull_request.labels.*.name, 'release-candidate')
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Create or update release branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+
+          BRANCH="release/pr-${PR_NUMBER}"
+
+          git init release-work
+          cd release-work
+          git remote add origin "https://x-access-token:${GH_TOKEN}@github.com/${REPO}.git"
+          git fetch --depth=1 origin "+refs/pull/${PR_NUMBER}/head:pr-head"
+          git checkout -B "${BRANCH}" pr-head
+          git push --force-with-lease origin "HEAD:refs/heads/${BRANCH}"
+
+          EXISTING_PR="$(gh pr list --repo "${REPO}" --head "${BRANCH}" --base main --json number --jq '.[0].number')"
+
+          if [ -z "${EXISTING_PR}" ]; then
+            gh pr create \
+              --repo "${REPO}" \
+              --base main \
+              --head "${BRANCH}" \
+              --title "Release candidate for PR #${PR_NUMBER}" \
+              --body "Automated release candidate branch for PR #${PR_NUMBER}."
+          fi
+
