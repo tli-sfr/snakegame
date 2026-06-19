@@ -1,5 +1,15 @@
 import { defineConfig, devices } from "@playwright/test";
 
+const browserProject = process.env.CI
+  ? {
+      name: "chromium",
+      use: { ...devices["Desktop Chrome"] },
+    }
+  : {
+      name: "chrome",
+      use: { ...devices["Desktop Chrome"], channel: "chrome" },
+    };
+
 export default defineConfig({
   testDir: "./tests/e2e",
   timeout: 30_000,
@@ -15,10 +25,5 @@ export default defineConfig({
     url: "http://127.0.0.1:4173",
     reuseExistingServer: !process.env.CI,
   },
-  projects: [
-    {
-      name: "chrome",
-      use: { ...devices["Desktop Chrome"], channel: "chrome" },
-    },
-  ],
+  projects: [browserProject],
 });

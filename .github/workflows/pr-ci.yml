@@ -13,7 +13,7 @@ permissions:
 
 jobs:
   regression:
-    if: github.event.pull_request.draft == false
+    if: github.event_name != 'pull_request' || github.event.pull_request.draft == false
     runs-on: ubuntu-latest
 
     steps:
@@ -24,7 +24,7 @@ jobs:
           node-version-file: .nvmrc
           cache: npm
 
-      - run: npm ci
+      - run: npm ci --registry=https://registry.npmjs.org --verbose
       - run: npm run typecheck
       - run: npm test
       - run: npm run build
