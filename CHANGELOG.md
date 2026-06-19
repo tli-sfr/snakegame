@@ -1,5 +1,20 @@
 # Changelog
 
+## Version 26.2.1.0
+
+Release date: 2026-06-19
+Release impact: Minor
+
+### Added
+
+- Displayed the release version number at the bottom of the game screen.
+- Added browser regression coverage for the visible release version.
+- Added CI triggers for `main` pushes and manual workflow dispatch so release evidence is visible after merge.
+
+### Build And Testing
+
+- Release gate commands: `npm run typecheck`, `npm test`, `npm run build`, and `npm run test:e2e`.
+
 ## Version 26.2.0.0
 
 Release date: 2026-06-18

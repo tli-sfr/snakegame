@@ -29,6 +29,7 @@ A player who wants a simple browser Snake game with a visible player name, score
 - The game screen displays the player name.
 - The game screen displays the current score.
 - The name and score appear in the top-right status area.
+- The release version number appears at the bottom of the game screen.
 - The remaining panel area is used for gameplay.
 - The game area is rendered in the browser, preferably with HTML Canvas.
 - The snake starts at a predictable initial position.
@@ -79,9 +80,10 @@ A player who wants a simple browser Snake game with a visible player name, score
 5. Given the snake hits a wall, then the game enters game over state.
 6. Given the snake hits itself, then the game enters game over state.
 7. Given game over is visible, when the player restarts, then a new game begins with score 0.
-8. Given the project is ready for PR, when the type-check command runs, then it completes successfully.
-9. Given the project is ready for PR, when the build command runs, then the browser bundle is created successfully.
-10. Given the project is ready for PR, when end-to-end tests run, then the start-to-game-over flow is verified in a browser.
+8. Given the game screen is visible, then the player sees the release version number at the bottom of the game screen.
+9. Given the project is ready for PR, when the type-check command runs, then it completes successfully.
+10. Given the project is ready for PR, when the build command runs, then the browser bundle is created successfully.
+11. Given the project is ready for PR, when end-to-end tests run, then the start-to-game-over flow is verified in a browser.
 
 ## Out of Scope for Version 1
 

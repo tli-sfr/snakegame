@@ -9,13 +9,14 @@ export type AppElements = {
   gameScreen: HTMLElement;
   playerName: HTMLElement;
   score: HTMLElement;
+  releaseVersion: HTMLElement;
   canvas: HTMLCanvasElement;
   gameOver: HTMLElement;
   finalScore: HTMLElement;
   restartButton: HTMLButtonElement;
 };
 
-export function createAppShell(root: HTMLElement): AppElements {
+export function createAppShell(root: HTMLElement, appVersion: string): AppElements {
   root.innerHTML = `
     <section class="app-shell" aria-label="Snake game">
       <section class="start-screen" data-screen="start">
@@ -49,6 +50,7 @@ export function createAppShell(root: HTMLElement): AppElements {
             <button type="button" data-testid="restart-button">Restart</button>
           </section>
         </div>
+        <footer class="release-version" data-testid="release-version">Version ${appVersion}</footer>
       </section>
     </section>
   `;
@@ -62,6 +64,7 @@ export function createAppShell(root: HTMLElement): AppElements {
     gameScreen: mustQuery(root, "[data-screen='game']"),
     playerName: mustQuery(root, "[data-testid='player-name']"),
     score: mustQuery(root, "[data-testid='score']"),
+    releaseVersion: mustQuery(root, "[data-testid='release-version']"),
     canvas: mustQuery(root, "[data-testid='game-canvas']"),
     gameOver: mustQuery(root, "[data-testid='game-over']"),
     finalScore: mustQuery(root, "[data-testid='final-score']"),

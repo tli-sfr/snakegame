@@ -12,6 +12,7 @@ test("plays the main Snake flow through score, game over, and restart", async ({
 
   await expect(page.getByTestId("player-name")).toHaveText("Player: Ada");
   await expect(page.getByTestId("score")).toHaveText("Score: 0");
+  await expect(page.getByTestId("release-version")).toHaveText("Version 26.2.1.0");
   await expect(page.getByTestId("game-canvas")).toBeVisible();
 
   await page.evaluate(() => {
