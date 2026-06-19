@@ -20,7 +20,7 @@ jobs:
           node-version-file: .nvmrc
           cache: npm
 
-      - run: npm ci
+      - run: npm ci --registry=https://registry.npmjs.org --verbose
       - run: npm run typecheck
       - run: npm test
       - run: npm run build
@@ -31,4 +31,3 @@ jobs:
         with:
           name: release-build
           path: dist
-

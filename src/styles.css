@@ -156,6 +156,13 @@ input {
   box-shadow: 0 16px 40px rgba(25, 45, 34, 0.13);
 }
 
+.release-version {
+  color: #5c6f65;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-align: right;
+}
+
 canvas {
   display: block;
   width: 100%;
@@ -209,5 +216,9 @@ canvas {
 
   .status-meta {
     justify-content: flex-start;
+  }
+
+  .release-version {
+    text-align: left;
   }
 }

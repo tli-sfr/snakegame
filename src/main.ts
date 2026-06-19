@@ -1,4 +1,5 @@
 import "./styles.css";
+import { APP_VERSION } from "./appVersion";
 import { DEFAULT_CONFIG } from "./game/models";
 import { GameEngine } from "./game/engine";
 import { directionFromKey } from "./game/rules";
@@ -27,7 +28,7 @@ if (!root) {
 }
 
 const engine = new GameEngine(DEFAULT_CONFIG);
-const elements = createAppShell(root);
+const elements = createAppShell(root, APP_VERSION);
 const renderer = new CanvasRenderer(elements.canvas);
 let tickTimer: number | undefined;
 

@@ -67,8 +67,9 @@ The browser page is divided into:
 
 - Status area at the top.
 - Game area below the status area.
+- Release version footer below the game area.
 
-The status area shows player name and score aligned to the right. The snake and food are rendered only inside the game area.
+The status area shows player name and score aligned to the right. The snake and food are rendered only inside the game area. The release version footer reads the package version injected at build time by Vite.
 
 ## Build Pipeline
 

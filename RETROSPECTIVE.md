@@ -154,3 +154,51 @@ Major. First baseline release version: `26.2.0.0`.
 - Consider installing a managed Playwright browser or standardizing on a Node 18+ runtime.
 - Consider adding a pause control in a future minor release.
 - Consider adding local high score persistence in a future minor release.
+
+## Iteration 2: Release Version Display
+
+Date: 2026-06-19
+
+### Goal
+
+Prepare a minor release that shows the release version number at the bottom of the game screen and leaves clear CI/CD evidence through the PR and release branch flow.
+
+### What Changed
+
+- Added a build-time app version constant from `package.json`.
+- Rendered `Version 26.2.1.0` below the game board.
+- Added E2E coverage for the visible version text.
+- Added `main` push and manual dispatch triggers to the PR CI workflow.
+
+### What Worked
+
+- The existing screen shell made it straightforward to add a small footer without touching game rules.
+- The E2E test is the right level for proving the player-visible version number.
+
+### What Was Confusing
+
+- npm rejects the four-part calendar version in `npm version`, so version metadata was updated directly to match the project's documented release format.
+
+### Bugs Or Risks Found
+
+- Release evidence depends on opening and merging the GitHub PR after the release branch is pushed.
+
+### Testing Performed
+
+- [x] TypeScript type check
+- [x] Unit tests
+- [x] Production build
+- [x] Browser end-to-end tests
+- [ ] Manual start screen test
+- [ ] Manual gameplay test
+- [ ] Manual game over test
+- [x] End-to-end regression
+
+### Release Impact
+
+Minor. Next release version: `26.2.1.0`.
+
+### Follow-Up Actions
+
+- Open the release PR from `release/26.2.1.0` to `main`.
+- Confirm `Release Regression`, PR CI, and post-merge `main` CI runs in GitHub Actions.

@@ -17,7 +17,7 @@ Build a simple, playable browser game that demonstrates a complete SDLC loop wit
 
 ## Game Summary
 
-The game starts on a screen where the player enters a name and clicks a start button. After starting, the game shows the player name and current score in the top-right area of the game panel. The rest of the panel is the play area.
+The game starts on a screen where the player enters a name and clicks a start button. After starting, the game shows the player name and current score in the top-right area of the game panel, plus the release version below the board. The rest of the panel is the play area.
 
 The snake moves continuously. The player controls direction with the keyboard. Eating food increases the score and lengthens the snake. Hitting a wall or the snake's own body ends the game.
 

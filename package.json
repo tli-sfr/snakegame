@@ -1,6 +1,6 @@
 {
   "name": "ai-native-snake-game",
-  "version": "26.2.0.0",
+  "version": "26.2.1.0",
   "private": true,
   "type": "module",
   "engines": {
@@ -20,6 +20,7 @@
   },
   "devDependencies": {
     "@playwright/test": "1.46.1",
+    "@types/node": "25.9.3",
     "typescript": "5.5.4",
     "vitest": "0.34.6"
   }
